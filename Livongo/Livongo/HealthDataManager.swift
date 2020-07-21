@@ -1,0 +1,78 @@
+//
+//  HealthDataManager.swift
+//  Livongo
+//
+//  Created by Luke Solomon on 7/20/20.
+//  Copyright © 2020 Observatory. All rights reserved.
+//
+
+import Foundation
+import HealthKit
+
+
+class HealthDataManager {
+  
+  
+  static var shared = HealthDataManager()
+  static var store = HKHealthStore()
+  
+  
+  func requestAuthorization(completion: @escaping (Bool) -> ()) {
+        
+    guard HKHealthStore.isHealthDataAvailable() else {
+      completion(false)
+      return
+    }
+
+    
+    let healthKitTypesToRead: Set<HKObjectType> = [HKObjectType.quantityType(forIdentifier: .stepCount)!]
+    
+    HKHealthStore().requestAuthorization(toShare: nil, read: healthKitTypesToRead) { (success, error) in
+      completion(success)
+      return
+    }
+  }
+  
+  
+  func getStepCounts(completion: @escaping (Result<([HKQuantitySample]), Error>) -> ()) {
+    
+    guard HKHealthStore.isHealthDataAvailable() else{
+      return
+    }
+    
+    guard let stepsCountSampleType = HKObjectType.quantityType(forIdentifier: .stepCount) else {
+      fatalError("*** This method should never fail ***")
+    }
+    
+    let stepQuery = HKSampleQuery.init(sampleType: stepsCountSampleType, predicate: nil, limit: 14, sortDescriptors: nil) {
+      (query, results, error) in
+      
+      guard let samples = results as? [HKQuantitySample] else {
+        // Handle any errors here.
+        print("HealthDataManager: Error fetching step counts: \(error?.localizedDescription)")
+        completion(.failure(error!))
+        return
+      }
+      
+//      var stepResults = [Double]()
+//      var dates = [Date]()
+//
+//      print("Samples: \(samples)")
+//      for sample in samples {
+//        stepResults.append(sample.quantity.doubleValue(for: .count()))
+//        print("Sample:\(sample)")
+//        dates.append(sample.startDate)
+//        print("Sample Double Value: \(sample.quantity.doubleValue(for: .count()))")
+//        // Process each sample here.
+//      }
+      
+
+      completion(.success(samples))
+    }
+    HealthDataManager.store.execute(stepQuery)
+  }
+  
+  
+  
+  
+}

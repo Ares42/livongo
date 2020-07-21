@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Step Count View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <viewController id="BYZ-38-t0r" customClass="StepCountViewController" customModule="Livongo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LFy-gp-WhS">
+                                <rect key="frame" x="0.0" y="115" width="414" height="747"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="StepCell" rowHeight="100" id="SHz-n3-6Kf" customClass="StepCountTableViewCell" customModule="Livongo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SHz-n3-6Kf" id="3Ep-SR-GKr">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="48s-uK-V0k">
+                                                    <rect key="frame" x="28" y="19" width="80.5" height="62"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Step Count Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lRf-09-dAA">
+                                                    <rect key="frame" x="272" y="19" width="130" height="62"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="48s-uK-V0k" secondAttribute="bottom" constant="8" id="2vI-Mu-lqk"/>
+                                                <constraint firstItem="lRf-09-dAA" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="48s-uK-V0k" secondAttribute="trailing" constant="8" id="FtF-9g-dEX"/>
+                                                <constraint firstItem="48s-uK-V0k" firstAttribute="leading" secondItem="3Ep-SR-GKr" secondAttribute="leadingMargin" constant="8" id="Mg8-AI-zeF"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="lRf-09-dAA" secondAttribute="bottom" constant="8" id="aUG-v4-hmi"/>
+                                                <constraint firstItem="lRf-09-dAA" firstAttribute="trailing" secondItem="3Ep-SR-GKr" secondAttribute="trailingMargin" constant="8" id="dWF-UI-xii"/>
+                                                <constraint firstItem="48s-uK-V0k" firstAttribute="top" secondItem="3Ep-SR-GKr" secondAttribute="topMargin" constant="8" id="icj-2f-HlO"/>
+                                                <constraint firstItem="lRf-09-dAA" firstAttribute="top" secondItem="3Ep-SR-GKr" secondAttribute="topMargin" constant="8" id="pID-uY-gCJ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="dateLabel" destination="48s-uK-V0k" id="ZaP-GN-saG"/>
+                                            <outlet property="stepCountLabel" destination="lRf-09-dAA" id="5w0-e1-jjM"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="JzP-AG-8S4">
+                                <rect key="frame" x="12" y="64" width="390" height="32"/>
+                                <segments>
+                                    <segment title="Oldest -&gt; Newest"/>
+                                    <segment title="Newest -&gt; Oldest"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentedControlTapped:" destination="BYZ-38-t0r" eventType="valueChanged" id="jLo-aw-WgW"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="JzP-AG-8S4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="12" id="IA5-qA-4v1"/>
+                            <constraint firstItem="LFy-gp-WhS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="MBK-z0-jj1"/>
+                            <constraint firstItem="JzP-AG-8S4" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="Nfl-13-IDb"/>
+                            <constraint firstItem="LFy-gp-WhS" firstAttribute="top" secondItem="JzP-AG-8S4" secondAttribute="bottom" constant="20" id="SPZ-xe-MPY"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="LFy-gp-WhS" secondAttribute="bottom" id="cJ9-Ri-IPC"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="JzP-AG-8S4" secondAttribute="trailing" constant="12" id="fVY-3P-M84"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LFy-gp-WhS" secondAttribute="trailing" id="pmM-1d-yyr"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="segmentedControl" destination="JzP-AG-8S4" id="mKC-Ec-HIk"/>
+                        <outlet property="tableView" destination="LFy-gp-WhS" id="JFi-tX-xfV"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="138.61607142857142"/>
+        </scene>
+    </scenes>
+</document>
