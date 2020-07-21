@@ -24,7 +24,6 @@ class HealthDataManager {
       return
     }
 
-    
     let healthKitTypesToRead: Set<HKObjectType> = [HKObjectType.quantityType(forIdentifier: .stepCount)!]
     
     HKHealthStore().requestAuthorization(toShare: nil, read: healthKitTypesToRead) { (success, error) in
@@ -53,26 +52,10 @@ class HealthDataManager {
         completion(.failure(error!))
         return
       }
-      
-//      var stepResults = [Double]()
-//      var dates = [Date]()
-//
-//      print("Samples: \(samples)")
-//      for sample in samples {
-//        stepResults.append(sample.quantity.doubleValue(for: .count()))
-//        print("Sample:\(sample)")
-//        dates.append(sample.startDate)
-//        print("Sample Double Value: \(sample.quantity.doubleValue(for: .count()))")
-//        // Process each sample here.
-//      }
-      
 
       completion(.success(samples))
     }
     HealthDataManager.store.execute(stepQuery)
   }
-  
-  
-  
   
 }

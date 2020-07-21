@@ -15,15 +15,6 @@ struct StepCountCellViewModel {
   var date:String
   
   init(sample: HKQuantitySample) {
-    //      print("Samples: \(samples)")
-    //      for sample in samples {
-    //        stepResults.append(sample.quantity.doubleValue(for: .count()))
-    //        print("Sample:\(sample)")
-    //        dates.append(sample.startDate)
-    //        print("Sample Double Value: \(sample.quantity.doubleValue(for: .count()))")
-    //        // Process each sample here.
-    //      }
-    
     self.stepCount = String(sample.quantity.doubleValue(for: .count()))
     
     let formatter = DateFormatter()
@@ -31,7 +22,6 @@ struct StepCountCellViewModel {
     
     self.date = formatter.string(from: sample.startDate) //TODO: Use a dateformatter here
   }
-  
 }
 
 
@@ -58,5 +48,4 @@ class StepCountTableViewCell: UITableViewCell {
     self.stepCountLabel.text = viewModel.stepCount
     self.dateLabel.text = viewModel.date
   }
-  
 }

@@ -54,7 +54,6 @@ class StepCountViewController: UIViewController {
       self.segmentedControl.isUserInteractionEnabled = true
     }
   }
-  
 }
 
 extension StepCountViewController: UITableViewDataSource {
@@ -72,6 +71,4 @@ extension StepCountViewController: UITableViewDataSource {
     
     return cell
   }
-  
-  
 }
